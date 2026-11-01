@@ -1,3 +1,6 @@
+import time
+
+from google.genai import errors
 from django.conf import settings
 from google import genai
 
@@ -18,8 +21,16 @@ Code:
 """
 
 def explain_code(code: str, language: str = "python") -> str:
-    response = client.models.generate_content(
-        model=settings.GEMINI_MODEL,
-        contents=PROMPT.format(language=language, code=code),
-    )
-    return response.text
+    for attempt in range(3):
+        try:
+            response = client.models.generate_content(
+                model=settings.GEMINI_MODEL,
+                contents=PROMPT.format(language=language, code=code),
+            )
+            return response.text
+        except errors.APIError as e:
+            # retry on rate limits and temporary server errors
+            if e.code in (429, 500, 503) and attempt < 2:
+                time.sleep(2 * (attempt + 1))
+                continue
+            raise

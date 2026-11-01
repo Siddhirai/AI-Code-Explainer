@@ -1,0 +1,7 @@
+title,language,difficulty,code,reference_explanation
+Sum of a list,python,beginner,"nums = [1, 2, 3]\nprint(sum(nums))","Makes a list of three numbers and prints their total, which is 6."
+Even or odd,python,beginner,"n = 7\nif n % 2 == 0:\n    print('even')\nelse:\n    print('odd')","Checks whether n divides by 2 with no remainder. If it does, it prints even, otherwise odd. For 7 it prints odd."
+Count 1 to 5,python,beginner,"for i in range(1, 6):\n    print(i)","Repeats the print step once for each number from 1 to 5, so it prints 1 2 3 4 5 on separate lines."
+Add function,python,beginner,"def add(a, b):\n    return a + b\n\nprint(add(2, 3))","Defines a function called add that gives back the sum of two numbers, then calls it with 2 and 3 and prints 5."
+Reverse a string,python,beginner,"s = 'hello'\nprint(s[::-1])","Stores the word hello and prints it backwards as olleh. The [::-1] part means read the text from the end to the start."
+Factorial,python,intermediate,"def fact(n):\n    if n == 0:\n        return 1\n    return n * fact(n - 1)\n\nprint(fact(5))","A function that calls itself with a smaller number each time until it reaches 0, multiplying as it goes. fact(5) is 5x4x3x2x1, so it prints 120."
